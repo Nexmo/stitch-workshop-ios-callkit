@@ -101,6 +101,9 @@ extension ChatVC {
                           onSuccess: { [weak self] result in
                             print("Call Result: ", result)
                             self?.call = result.call
+                            DispatchQueue.main.async {
+                                self?.callManager.startCall(handle: member.user.name, videoEnabled: false)
+                            }
         }) { [weak self] error in
             self?.showAlert(with: "Unable to call member.", message: "Reason: \(error.localizedDescription)")
         }
