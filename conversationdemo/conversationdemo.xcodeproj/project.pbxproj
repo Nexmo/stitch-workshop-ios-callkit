@@ -25,6 +25,10 @@
 		99C68DA92118A63300F4CDB5 /* TextMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C68DA82118A63300F4CDB5 /* TextMessage.swift */; };
 		99C68DAB2118A6A100F4CDB5 /* ChatVC+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C68DAA2118A6A100F4CDB5 /* ChatVC+TableView.swift */; };
 		99C68DAD2118E82400F4CDB5 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C68DAC2118E82400F4CDB5 /* LoadingIndicator.swift */; };
+		99CFEBEF2123797900DEB27A /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CFEBEE2123797900DEB27A /* Audio.swift */; };
+		99CFEBF121237A7100DEB27A /* Caller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CFEBF021237A7100DEB27A /* Caller.swift */; };
+		99CFEBF321237AA900DEB27A /* CallManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CFEBF221237AA900DEB27A /* CallManager.swift */; };
+		99CFEBF521237B0400DEB27A /* ProviderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CFEBF421237B0400DEB27A /* ProviderDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +53,10 @@
 		99C68DA82118A63300F4CDB5 /* TextMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextMessage.swift; sourceTree = "<group>"; };
 		99C68DAA2118A6A100F4CDB5 /* ChatVC+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatVC+TableView.swift"; sourceTree = "<group>"; };
 		99C68DAC2118E82400F4CDB5 /* LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
+		99CFEBEE2123797900DEB27A /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
+		99CFEBF021237A7100DEB27A /* Caller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caller.swift; sourceTree = "<group>"; };
+		99CFEBF221237AA900DEB27A /* CallManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallManager.swift; sourceTree = "<group>"; };
+		99CFEBF421237B0400DEB27A /* ProviderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderDelegate.swift; sourceTree = "<group>"; };
 		C440487F4932944717CB6DD1 /* Pods-conversationdemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-conversationdemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-conversationdemo/Pods-conversationdemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,6 +136,7 @@
 			children = (
 				99B49E1620D1A37B0047FB46 /* AppDelegate.swift */,
 				998692E120DA69DB00D32E94 /* Configuration.swift */,
+				99CFEBED2123793F00DEB27A /* CallKit */,
 				998692D620D94BE700D32E94 /* Models */,
 				99A2C17620D942B70098B3EF /* Controllers */,
 				99722819210BC045000A3CAB /* View */,
@@ -137,6 +146,17 @@
 				99B49E2220D1A37B0047FB46 /* Info.plist */,
 			);
 			path = conversationdemo;
+			sourceTree = "<group>";
+		};
+		99CFEBED2123793F00DEB27A /* CallKit */ = {
+			isa = PBXGroup;
+			children = (
+				99CFEBEE2123797900DEB27A /* Audio.swift */,
+				99CFEBF021237A7100DEB27A /* Caller.swift */,
+				99CFEBF221237AA900DEB27A /* CallManager.swift */,
+				99CFEBF421237B0400DEB27A /* ProviderDelegate.swift */,
+			);
+			path = CallKit;
 			sourceTree = "<group>";
 		};
 		EF2AA186AFC44B71B7341FF6 /* Pods */ = {
@@ -302,11 +322,15 @@
 				998692D420D94B4500D32E94 /* User.swift in Sources */,
 				9971FC9120DA7DDD006D6EE8 /* ChatVC+AudioPermission.swift in Sources */,
 				99A2C17A20D942B70098B3EF /* HomeVC+Network.swift in Sources */,
+				99CFEBF521237B0400DEB27A /* ProviderDelegate.swift in Sources */,
+				99CFEBEF2123797900DEB27A /* Audio.swift in Sources */,
+				99CFEBF121237A7100DEB27A /* Caller.swift in Sources */,
 				998692E020DA621800D32E94 /* ChatVC+Stitch.swift in Sources */,
 				99C68DAD2118E82400F4CDB5 /* LoadingIndicator.swift in Sources */,
 				99A2C17B20D942B70098B3EF /* HomeVC+Stitch.swift in Sources */,
 				99B49E1720D1A37B0047FB46 /* AppDelegate.swift in Sources */,
 				998692E220DA69DB00D32E94 /* Configuration.swift in Sources */,
+				99CFEBF321237AA900DEB27A /* CallManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
