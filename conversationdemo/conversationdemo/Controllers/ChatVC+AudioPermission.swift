@@ -15,6 +15,7 @@ extension ChatVC {
         do {
             let session = AVAudioSession.sharedInstance()
             try session.setCategory(AVAudioSessionCategoryPlayAndRecord)
+            try session.setMode(AVAudioSessionModeVoiceChat)
             session.requestRecordPermission { success in
                 completion(success)
             }
