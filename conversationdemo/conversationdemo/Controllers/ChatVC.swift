@@ -86,7 +86,14 @@ class ChatVC: UIViewController {
     
     @IBAction func endCallAction(_ sender: Any) {
         
-        conversation?.media.disable()
+        call?.hangUp(onSuccess: { [weak self] in
+            self?.conversation?.media.disable()
+            self?.call = nil
+        })
+        
+        guard let call = callManager.calls.first else { return }
+        callManager?.setHeld(call: call, onHold: true)
+        callManager.removeAllCalls()
     }
     
     // MARK: - Private Methods
