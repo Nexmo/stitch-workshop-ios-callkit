@@ -15,8 +15,8 @@ class ChatVC: UIViewController {
     
     @IBOutlet weak var inputTextField: UITextField!
     
-    @IBOutlet weak var chatTextView: UITextView!
-    
+    @IBOutlet weak var chatTableView: UITableView!
+        
     @IBOutlet weak var typingLabel: UILabel!
     
     @IBOutlet weak var endCallButton: UIButton!
@@ -36,6 +36,8 @@ class ChatVC: UIViewController {
     }
     
     var whoIsTyping = Set<String>()
+    
+    lazy var textMessages: [TextMessage] = []
     
     // MARK: - View
     

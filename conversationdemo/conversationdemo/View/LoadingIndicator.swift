@@ -1,5 +1,5 @@
 //
-//  NVActivityIndicator.swift
+//  LoadingIndicator.swift
 //  conversationdemo
 //
 //  Created by Eric Giannini on 6/19/18.
@@ -34,14 +34,14 @@ struct LoadingIndicator {
                                         backgroundColor: backgroundColor,
                                         textColor: textColor)
         DispatchQueue.main.async {
-            NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+            NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData, nil)
         }
     }
     
     public static func stopAnimating() {
         
         DispatchQueue.main.async {
-            NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+            NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
         }
     }
 }

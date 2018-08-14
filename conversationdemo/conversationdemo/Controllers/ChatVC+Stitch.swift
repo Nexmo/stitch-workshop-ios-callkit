@@ -20,9 +20,12 @@ extension ChatVC {
                 
                 switch event {
                 case let textEvent as TextEvent:
-                    guard let text = textEvent.text else { return }
-                    self?.chatTextView.insertText("\(text)\n")
+                    let seen = textEvent.markAsSeen()
+                    let textMessage = TextMessage(message: textEvent.text, isSeen: seen)
                     
+                    self?.textMessages.append(textMessage)
+                    self?.chatTableView.reloadData()
+
                 case _ as MediaEvent:
                     self?.showAlert(with: "Media Received", message: "You have received a media in chat.")
                     

@@ -1,38 +1,35 @@
 PODS:
-  - Alamofire (4.6.0)
+  - Alamofire (4.7.3)
+  - Nexmo-Stitch (1.8.0):
+    - Alamofire (~> 4.0)
+    - NexmoGRDB.swift (~> 0.90)
+    - NexmoWebRTC (~> 63.11)
+    - RxSwift (~> 4.0)
+    - Socket.IO-Client-Swift (~> 13.0)
   - NexmoGRDB.swift (0.90.5)
   - NexmoWebRTC (63.11.16)
-  - NVActivityIndicatorView (4.2.1):
-    - NVActivityIndicatorView/Presenter (= 4.2.1)
-  - NVActivityIndicatorView/Presenter (4.2.1)
-  - RxCocoa (4.1.2):
-    - RxSwift (~> 4.0)
+  - NVActivityIndicatorView (4.3.0):
+    - NVActivityIndicatorView/Presenter (= 4.3.0)
+  - NVActivityIndicatorView/Presenter (4.3.0)
   - RxSwift (4.2.0)
-  - Socket.IO-Client-Swift (13.1.3):
+  - Socket.IO-Client-Swift (13.2.1):
     - Starscream (~> 3.0.2)
   - Starscream (3.0.5)
-  - Stitch (0.23.0):
-    - Alamofire (~> 4.6.0)
-    - NexmoGRDB.swift (~> 0.90.3)
-    - NexmoWebRTC (~> 63.11.16)
-    - RxCocoa (~> 4.1.2)
-    - Socket.IO-Client-Swift (~> 13.1.1)
 
 DEPENDENCIES:
+  - Nexmo-Stitch
   - NVActivityIndicatorView
-  - Stitch
 
 SPEC CHECKSUMS:
-  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  Nexmo-Stitch: ecb45e5573ce0ada64c349e91850bccbffc7b7ed
   NexmoGRDB.swift: a3f76f83f87c0836f3b2cdb375aa7e9e9f8bce3a
   NexmoWebRTC: 259075ae09616c4b847024f0dccd22650dc3a14c
-  NVActivityIndicatorView: 8068ba3ad39cb44cbaab25d89ff2546b3f092681
-  RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
+  NVActivityIndicatorView: 963f62bf9f993fcf23218e55958e5b1761b9504c
   RxSwift: 99e10317ddfcc7fbe01356aafd118fde4a0be104
-  Socket.IO-Client-Swift: d30d6fd08a38ad2a182b090936a043bf512ab2de
+  Socket.IO-Client-Swift: b94943e2fb916fe2f95244b9ed21828634002280
   Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
-  Stitch: 619f8883a9d549c2ec3163dc8257b3af4e6dd3f9
 
-PODFILE CHECKSUM: b80913faf6cef29a9ca8162a96af2935a22ac4b1
+PODFILE CHECKSUM: 89d2fd2652723160a429792c7155ca860d3c2047
 
 COCOAPODS: 1.4.0

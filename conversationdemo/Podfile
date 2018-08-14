@@ -6,7 +6,7 @@ target 'conversationdemo' do
   use_frameworks!
 
   # Pods for conversationdemo
-  pod "Stitch"
+  pod "Nexmo-Stitch"
   pod "NVActivityIndicatorView"
   
 end

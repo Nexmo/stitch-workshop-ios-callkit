@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9704F74FB9EF74105576AAAA /* Pods_conversationdemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 918D4E77142E699364E05502 /* Pods_conversationdemo.framework */; };
 		9971FC9120DA7DDD006D6EE8 /* ChatVC+AudioPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9971FC9020DA7DDD006D6EE8 /* ChatVC+AudioPermission.swift */; };
 		998692D020D946C000D32E94 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998692CF20D946C000D32E94 /* Conversation.swift */; };
-		998692D220D9481900D32E94 /* NewUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998692D120D9481900D32E94 /* NewUserInfo.swift */; };
+		998692D220D9481900D32E94 /* UserTokenInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998692D120D9481900D32E94 /* UserTokenInfo.swift */; };
 		998692D420D94B4500D32E94 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998692D320D94B4500D32E94 /* User.swift */; };
 		998692DC20DA5D6A00D32E94 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998692DB20DA5D6A00D32E94 /* ChatVC.swift */; };
-		998692DE20DA611A00D32E94 /* NVActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998692DD20DA611900D32E94 /* NVActivityIndicator.swift */; };
 		998692E020DA621800D32E94 /* ChatVC+Stitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998692DF20DA621800D32E94 /* ChatVC+Stitch.swift */; };
 		998692E220DA69DB00D32E94 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998692E120DA69DB00D32E94 /* Configuration.swift */; };
 		99A2C17A20D942B70098B3EF /* HomeVC+Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A2C17720D942B70098B3EF /* HomeVC+Network.swift */; };
@@ -22,17 +22,19 @@
 		99B49E1C20D1A37B0047FB46 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99B49E1A20D1A37B0047FB46 /* Main.storyboard */; };
 		99B49E1E20D1A37B0047FB46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99B49E1D20D1A37B0047FB46 /* Assets.xcassets */; };
 		99B49E2120D1A37B0047FB46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99B49E1F20D1A37B0047FB46 /* LaunchScreen.storyboard */; };
-		CE1BED4642EE4E454732EE1D /* Pods_conversationdemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5275B0E26EEDF3B868827DD /* Pods_conversationdemo.framework */; };
+		99C68DA92118A63300F4CDB5 /* TextMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C68DA82118A63300F4CDB5 /* TextMessage.swift */; };
+		99C68DAB2118A6A100F4CDB5 /* ChatVC+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C68DAA2118A6A100F4CDB5 /* ChatVC+TableView.swift */; };
+		99C68DAD2118E82400F4CDB5 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C68DAC2118E82400F4CDB5 /* LoadingIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3AE5BE100DAD5E2C7D2AB60A /* Pods-conversationdemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-conversationdemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-conversationdemo/Pods-conversationdemo.debug.xcconfig"; sourceTree = "<group>"; };
+		918D4E77142E699364E05502 /* Pods_conversationdemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_conversationdemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9971FC9020DA7DDD006D6EE8 /* ChatVC+AudioPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatVC+AudioPermission.swift"; sourceTree = "<group>"; };
 		998692CF20D946C000D32E94 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
-		998692D120D9481900D32E94 /* NewUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserInfo.swift; sourceTree = "<group>"; };
+		998692D120D9481900D32E94 /* UserTokenInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTokenInfo.swift; sourceTree = "<group>"; };
 		998692D320D94B4500D32E94 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		998692DB20DA5D6A00D32E94 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
-		998692DD20DA611900D32E94 /* NVActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NVActivityIndicator.swift; path = conversationdemo/View/NVActivityIndicator.swift; sourceTree = SOURCE_ROOT; };
 		998692DF20DA621800D32E94 /* ChatVC+Stitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatVC+Stitch.swift"; sourceTree = "<group>"; };
 		998692E120DA69DB00D32E94 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = conversationdemo/Configuration.swift; sourceTree = SOURCE_ROOT; };
 		99A2C17720D942B70098B3EF /* HomeVC+Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeVC+Network.swift"; sourceTree = "<group>"; };
@@ -44,8 +46,10 @@
 		99B49E1D20D1A37B0047FB46 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		99B49E2020D1A37B0047FB46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99B49E2220D1A37B0047FB46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99C68DA82118A63300F4CDB5 /* TextMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextMessage.swift; sourceTree = "<group>"; };
+		99C68DAA2118A6A100F4CDB5 /* ChatVC+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatVC+TableView.swift"; sourceTree = "<group>"; };
+		99C68DAC2118E82400F4CDB5 /* LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		C440487F4932944717CB6DD1 /* Pods-conversationdemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-conversationdemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-conversationdemo/Pods-conversationdemo.release.xcconfig"; sourceTree = "<group>"; };
-		D5275B0E26EEDF3B868827DD /* Pods_conversationdemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_conversationdemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE1BED4642EE4E454732EE1D /* Pods_conversationdemo.framework in Frameworks */,
+				9704F74FB9EF74105576AAAA /* Pods_conversationdemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,27 +67,28 @@
 		2850146E375740068F70DD0F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D5275B0E26EEDF3B868827DD /* Pods_conversationdemo.framework */,
+				918D4E77142E699364E05502 /* Pods_conversationdemo.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		99722819210BC045000A3CAB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				99C68DAC2118E82400F4CDB5 /* LoadingIndicator.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		998692D620D94BE700D32E94 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				998692CF20D946C000D32E94 /* Conversation.swift */,
-				998692D120D9481900D32E94 /* NewUserInfo.swift */,
+				998692D120D9481900D32E94 /* UserTokenInfo.swift */,
 				998692D320D94B4500D32E94 /* User.swift */,
+				99C68DA82118A63300F4CDB5 /* TextMessage.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		998692DA20D96C8D00D32E94 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				998692DD20DA611900D32E94 /* NVActivityIndicator.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		99A2C17620D942B70098B3EF /* Controllers */ = {
@@ -93,9 +98,9 @@
 				99A2C17820D942B70098B3EF /* HomeVC+Stitch.swift */,
 				99A2C17920D942B70098B3EF /* HomeVC.swift */,
 				998692DB20DA5D6A00D32E94 /* ChatVC.swift */,
-				9971FC9020DA7DDD006D6EE8 /* ChatVC+AudioPermission.swift */,
 				998692DF20DA621800D32E94 /* ChatVC+Stitch.swift */,
-				998692DA20D96C8D00D32E94 /* View */,
+				9971FC9020DA7DDD006D6EE8 /* ChatVC+AudioPermission.swift */,
+				99C68DAA2118A6A100F4CDB5 /* ChatVC+TableView.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -125,8 +130,9 @@
 				998692E120DA69DB00D32E94 /* Configuration.swift */,
 				998692D620D94BE700D32E94 /* Models */,
 				99A2C17620D942B70098B3EF /* Controllers */,
-				99B49E1A20D1A37B0047FB46 /* Main.storyboard */,
+				99722819210BC045000A3CAB /* View */,
 				99B49E1D20D1A37B0047FB46 /* Assets.xcassets */,
+				99B49E1A20D1A37B0047FB46 /* Main.storyboard */,
 				99B49E1F20D1A37B0047FB46 /* LaunchScreen.storyboard */,
 				99B49E2220D1A37B0047FB46 /* Info.plist */,
 			);
@@ -172,7 +178,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0910;
-				LastUpgradeCheck = 0910;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Nexmo, Inc.";
 				TargetAttributes = {
 					99B49E1220D1A37B0047FB46 = {
@@ -237,27 +243,25 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-conversationdemo/Pods-conversationdemo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${PODS_ROOT}/Nexmo-Stitch/Carthage/Build/iOS/Stitch.framework",
+				"${PODS_ROOT}/Nexmo-Stitch/Carthage/Build/iOS/Stitch.framework.dSYM",
 				"${BUILT_PRODUCTS_DIR}/NexmoGRDB.swift/GRDB.framework",
 				"${PODS_ROOT}/NexmoWebRTC/WebRTC.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
-				"${PODS_ROOT}/Stitch/Carthage/Build/iOS/NexmoConversation.framework",
-				"${PODS_ROOT}/Stitch/Carthage/Build/iOS/NexmoConversation.framework.dSYM",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stitch.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/Stitch.framework.dSYM",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WebRTC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NexmoConversation.framework",
-				"${DWARF_DSYM_FOLDER_PATH}/NexmoConversation.framework.dSYM",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -289,15 +293,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				998692DE20DA611A00D32E94 /* NVActivityIndicator.swift in Sources */,
 				998692DC20DA5D6A00D32E94 /* ChatVC.swift in Sources */,
+				99C68DA92118A63300F4CDB5 /* TextMessage.swift in Sources */,
+				99C68DAB2118A6A100F4CDB5 /* ChatVC+TableView.swift in Sources */,
 				998692D020D946C000D32E94 /* Conversation.swift in Sources */,
-				998692D220D9481900D32E94 /* NewUserInfo.swift in Sources */,
+				998692D220D9481900D32E94 /* UserTokenInfo.swift in Sources */,
 				99A2C17C20D942B70098B3EF /* HomeVC.swift in Sources */,
 				998692D420D94B4500D32E94 /* User.swift in Sources */,
 				9971FC9120DA7DDD006D6EE8 /* ChatVC+AudioPermission.swift in Sources */,
 				99A2C17A20D942B70098B3EF /* HomeVC+Network.swift in Sources */,
 				998692E020DA621800D32E94 /* ChatVC+Stitch.swift in Sources */,
+				99C68DAD2118E82400F4CDB5 /* LoadingIndicator.swift in Sources */,
 				99A2C17B20D942B70098B3EF /* HomeVC+Stitch.swift in Sources */,
 				99B49E1720D1A37B0047FB46 /* AppDelegate.swift in Sources */,
 				998692E220DA69DB00D32E94 /* Configuration.swift in Sources */,
@@ -340,6 +346,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -347,6 +354,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -397,6 +405,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -404,6 +413,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
