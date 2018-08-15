@@ -39,6 +39,7 @@ CallKit is a relatively new framework that facilitates integrations like Nexmo's
 
 ## Getting Started 
 
+Download the starter project [here](). To get the app up and running on your localhost, you follow the directions for the server [here](). After you are able to get up and running, test out your setup by creating a member, joining a conversation and triggering an event. If everything worked out well, you are all setup now! 
 
 
 ### Make an Outgoing Call 
