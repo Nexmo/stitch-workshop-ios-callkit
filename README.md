@@ -6,27 +6,33 @@ Note: CallKit features do work in the simulator. In order to follow along with t
 
 ## What is Nexmo In-App Voice
 
-Nexmo In-App Messaging, In-App Voice, and In-App Video is part of a single, conversation centric API offered by Nexmo, the Vonage API Platform. Nexmo In-App Voice uses WebRTC and includes all the essentials you need to build a feature rich voice experience. There are just a few key concepts. These are: 
+Nexmo In-App Messaging, In-App Voice, and In-App Video is part of a single, conversation centric API offered by Nexmo, the Vonage API Platform. Nexmo In-App Voice leverages the rising power of WebRTC to enable developers and builders of all kinds to create and deliver fully programmable, feature rich voice applications and experiences across the cloud. 
 
-- Conversation
+### Concepts 
+
+There are just a few key concepts. These are: 
+
+- __Conversation__
 
 A conversation is a shared core component that Nexmo APIs rely on. Conversations happen over multiple mediums and and can have associated Users through Memberships.
 
-- User
+- __User__
 
 The concept of a user exists in Nexmo APIs, you can associate one with a user in your own application if you choose. A user can have multiple memberships to conversations and can communicate with other users through various different mediums.
 
-- Member
+- __Member__
 
 Memberships connect users with conversations. Each membership has one conversation and one user however a user can have many memberships to conversations just as conversations can have many members.
 
-- Audio
+- __Audio__
 
 Audio streams can be enabled and disabled in a Conversation so that Members can communicate with voice.
 
-- Media Events
+- __Media Events__
 
 Media events will fire in a Conversation when media state changes for a member. This can be when an Audio stream is started or ended.
+
+### Goal
 
 In this workshop we use all of the concepts that are key to Nexmo In-App Voice for initiating a call with Apple's iOS CallKit.  
 
