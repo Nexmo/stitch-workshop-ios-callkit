@@ -39,6 +39,8 @@ class ChatVC: UIViewController {
     
     lazy var textMessages: [TextMessage] = []
     
+    var callManager: CallManager!
+
     // MARK: - View
     
     override func viewDidLoad() {
