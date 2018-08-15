@@ -50,21 +50,25 @@ Download the starter project [here](). To get the app up and running on your loc
 
 ### Make an Outgoing Call 
 
-A user can initiate an outgoing call with a VoIP app in any of the following ways:
-- Performing an interaction within the app
-- Opening a link with a supported custom URL scheme
-- Initiating a VoIP call using Siri
+To make an outgoing call, an app requests an action from a controller. In much the same way as `UIAlertController`s operate, an app requests a `CXStartCallAction` object from its `CXCallController` object. This action, however, consists of a UUID to uniquely identify the call and a `CXHandle` object to specify the recipient.
 
-To make an outgoing call, an app requests a `CXStartCallAction` object from its `CXCallController` object. The action consists of a UUID to uniquely identify the call and a `CXHandle` object to specify the recipient.
+We set the constants for this method call:
 
 ```Swift 
 let uuid = UUID()
-let handle = CXHandle(type: .emailAddress, value: "jappleseed@apple.com")
+let handle = CXHandle(type: .emailAddress, value: "timcook@apple.com")
+```
+
+We create an action setting its destination and embed it into a transaction: 
  
+```Swift
 let startCallAction = CXStartCallAction(call: uuid)
 startCallAction.destination = handle
- 
 let transaction = CXTransaction(action: startCallAction)
+```
+You pass your transaction into a controller's request, just as stated above. 
+
+```Swift
 callController.request(transaction) { error in
     if let error = error {
         print("Error requesting transaction: \(error)")
@@ -73,7 +77,7 @@ callController.request(transaction) { error in
     }
 }
 ```
-
+Voila! There is how the CallKit works. In your integration, however, you perform these same steps, except differently, since the Nexmo Stitch In-App Messaging SDK handles the calling functionality for us with convenience call methods. 
 
 ## Resources 
 - [CallKit Tutorial for iOS](https://www.raywenderlich.com/701-callkit-tutorial-for-ios) 
