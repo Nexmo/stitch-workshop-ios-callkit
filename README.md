@@ -155,17 +155,317 @@ In the initializer you set the properties to be assigned such values as `UUID`, 
 
 #### Second Step 
 
-With our `Caller` object set up, you create a `CallManager` to handle calls, control and make requests, as mentioned above.  
+With our `Caller` object set up, you create a `CallManager` to handle calls, control and make requests and process transactions, as mentioned above. 
+
+To start off you `import` `Foundation` and `CallKit`.   
+
+```Swift 
+import Foundation
+import CallKit
+```
+
+Underneath the imports you create a class called `CallManager`, which follows the same style as many of Apple's own native "managers" such as Apple's `CCLocationManager`. 
+
+```Swift
+class CallManager {
+    
+    private let callController = CXCallController()
+    
+    var callsChangedHandler: (() -> Void)?
+    
+    private(set) var calls = [Caller]()
+    
+    func callWithUUID(uuid: UUID) -> Caller? {
+        guard let index = calls.index(where: { $0.uuid == uuid }) else {
+            return nil
+        }
+        return calls[index]
+    }
+}
+```
+Your first property is an instance of `CXCallController()`, a placeholder for `Caller` objects and a method for calling with `UUID`s. Below are the remaining boilerplate that you configure. 
+
+```Swift
+    func startCall(handle: String, videoEnabled: Bool) {
+        let handle = CXHandle(type: .phoneNumber, value: handle)
+        let startCallAction = CXStartCallAction(call: UUID(), handle: handle)
+        startCallAction.isVideo = videoEnabled
+        let transaction = CXTransaction(action: startCallAction)
+        requestTransaction(transaction)
+    }
+    
+    func add(call: Caller) {
+        calls.append(call)
+        call.stateChanged = { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.callsChangedHandler?()
+        }
+        callsChangedHandler?()
+    }
+    
+    func end(call: Caller) {
+        let endCallAction = CXEndCallAction(call: call.uuid)
+        let transaction = CXTransaction(action: endCallAction)
+        requestTransaction(transaction)
+    }
+    
+    func remove(call: Caller) {
+        guard let index = calls.index(where: { $0 === call }) else { return }
+        calls.remove(at: index)
+        callsChangedHandler?()
+    }
+    
+    func removeAllCalls() {
+        calls.removeAll()
+        callsChangedHandler?()
+    }
+    
+    func setHeld(call: Caller, onHold: Bool) {
+        let setHeldCallAction = CXSetHeldCallAction(call: call.uuid, onHold: onHold)
+        let transaction = CXTransaction()
+        transaction.addAction(setHeldCallAction)
+        requestTransaction(transaction)
+    }
+    
+    private func requestTransaction(_ transaction: CXTransaction) {
+        callController.request(transaction) { error in
+            if let error = error {
+                print("Error requesting transaction: \(error)")
+            } else {
+                print("Requested transaction successfully")
+            }
+        }
+    }
+```
+Most of these methods are straightforward. `startCall()` is almost verbatim Apple's own destination, handle and transaction as shared above, except you embed these elements into a method so that `requestTransaction()`, the last method, is daisy-chained. 
+
+#### Receiving an Incoming Call 
+Come now the incoming calls. To configure your app to receive incoming calls, first create a `CXProvider` object and store it for global access. Using information provided by the external notification, the app creates a UUID and a `CXCallUpdate` object to uniquely identify the call and the caller, and passes them both to the provider using the `reportNewIncomingCall(with:update:completion:)` method as shown below.
+
+```Swift 
+if let uuidString = payload.dictionaryPayload["UUID"] as? String,
+    let identifier = payload.dictionaryPayload["identifier"] as? String,
+    let uuid = UUID(uuidString: uuidString)
+{
+    let update = CXCallUpdate()    
+    update.callerIdentifier = identifier
+    
+    provider.reportNewIncomingCall(with: uuid, update: update) { error in
+        // …
+    }
+}
+```
+
+After the call is connected, the system calls the `provider(_:perform:)` method of the provider delegate to handle the incoming call. In your implementation, the delegate, which is called the `ProviderDelegate` in your project` is responsible for configuring an `AVAudioSession` and calling `fulfill()` on the action when finished, as is shown below.
+
+```Swift
+func provider(_ provider: CXProvider, perform action: CXAnswerCallAction) {
+    // configure audio session
+    action.fulfill()
+}
+```
 
 #### Third Step
 
-#### Fourth Step
+Your provider is a Nexmo In-App Voice call so you configure your iOS app to interface with this API. 
+
+```
+import AVFoundation
+import CallKit
+
+class ProviderDelegate: NSObject {
+    
+    fileprivate let callManager: CallManager
+    fileprivate let provider: CXProvider
+    
+    init(callManager: CallManager) {
+        self.callManager = callManager
+        provider = CXProvider(configuration: type(of: self).providerConfiguration)
+        super.init()
+        provider.setDelegate(self, queue: nil)
+    }
+    
+    static var providerConfiguration: CXProviderConfiguration {
+        let providerConfiguration = CXProviderConfiguration(localizedName: "Stitch")
+        providerConfiguration.supportsVideo = false
+        providerConfiguration.maximumCallsPerCallGroup = 1
+        providerConfiguration.supportedHandleTypes = [.phoneNumber]
+        
+        return providerConfiguration
+    }
+    
+    func reportIncomingCall(uuid: UUID, handle: String, hasVideo: Bool = false, completion: ((NSError?) -> Void)?) {
+        
+        let update = CXCallUpdate()
+        update.remoteHandle = CXHandle(type: .phoneNumber, value: handle)
+        update.hasVideo = hasVideo
+        
+        provider.reportNewIncomingCall(with: uuid, update: update) { error in
+            if error == nil {
+                let call = Caller(uuid: uuid, handle: handle)
+                self.callManager.add(call: call)
+            }
+            
+            completion?(error as NSError?)
+        }
+    }
+}
+``` 
+After creating the class for the provider delegate, you extend its functionality to implement the `CXProviderDelegate`'s required methods. 
+
+```Swift
+extension ProviderDelegate: CXProviderDelegate {
+    
+    func providerDidReset(_ provider: CXProvider) {
+        stopAudio()
+        
+        for call in callManager.calls {
+            call.end()
+        }
+        
+        callManager.removeAllCalls()
+    }
+    
+    func provider(_ provider: CXProvider, perform action: CXAnswerCallAction) {
+        
+        guard let call = callManager.callWithUUID(uuid: action.callUUID) else {
+            action.fail()
+            return
+        }
+        
+        configureAudioSession()
+        call.answer()
+        action.fulfill()
+    }
+    
+    func provider(_ provider: CXProvider, didActivate audioSession: AVAudioSession) {
+        startAudio()
+    }
+    
+    func provider(_ provider: CXProvider, perform action: CXEndCallAction) {
+        
+        guard let call = callManager.callWithUUID(uuid: action.callUUID) else {
+            action.fail()
+            return
+        }
+        
+        stopAudio()
+        call.end()
+        action.fulfill()
+        callManager.remove(call: call)
+    }
+    
+    func provider(_ provider: CXProvider, perform action: CXStartCallAction) {
+        let call = Caller(uuid: action.callUUID, outgoing: true, handle: action.handle.value)
+        
+        configureAudioSession()
+        
+        call.connectedStateChanged = { [weak self, weak call] in
+            guard let strongSelf = self, let call = call else { return }
+            
+            if call.connectedState == .pending {
+                strongSelf.provider.reportOutgoingCall(with: call.uuid, startedConnectingAt: nil)
+            } else if call.connectedState == .complete {
+                strongSelf.provider.reportOutgoingCall(with: call.uuid, connectedAt: nil)
+            }
+        }
+        
+        call.start { [weak self, weak call] success in
+            guard let strongSelf = self, let call = call else { return }
+            
+            if success {
+                action.fulfill()
+                strongSelf.callManager.add(call: call)
+            } else {
+                action.fail()
+            }
+        }
+    }
+    
+    func provider(_ provider: CXProvider, perform action: CXSetHeldCallAction) {
+        guard let call = callManager.callWithUUID(uuid: action.callUUID) else {
+            action.fail()
+            return
+        }
+        
+        call.state = action.isOnHold ? .held : .active
+        if call.state == .held {
+            stopAudio()
+        } else {
+            startAudio()
+        }
+        action.fulfill()
+    }
+}
+```
+Simplified, the code above covers a set of actions such as `CXAnswerCallAction`, `CXEndCallAction`, `CXStartCallAction`, `CXSetHeldCallAction`. Thankfully, these methods are mostly boilerplate so filling in the blanks is straightforward. 
 
 #### Fifth Step 
 
+With the proper setup in place you configure CallKit to operate with Nexmo In-App Voice. You add a property for initializing an instance of `CallManager` to handle outgoing, incoming calls in `ChatVC.swift`. 
+
+```Swift 
+var callManager: CallManager!
+```
+With an instance of `callManager` available you configure `endCall()` to end a call. 
+
+```Swift 
+@IBAction func endCallAction(_ sender: Any) {
+        
+        call?.hangUp(onSuccess: { [weak self] in
+            self?.conversation?.media.disable()
+            self?.call = nil
+        })
+        
+        guard let call = callManager.calls.first else { return }
+        callManager?.setHeld(call: call, onHold: true)
+        callManager.removeAllCalls()
+    }
+```
+In `ChatVC+Stitch.swift` you modify `call(_ member: Member)` to handle calling with the `CallManager`: 
+
+```Swift 
+    func call(_ member: Member) {
+        
+        client.media.call([member.user.name],
+                          onSuccess: { [weak self] result in
+                            print("Call Result: ", result)
+                            self?.call = result.call
+                            DispatchQueue.main.async {
+                                self?.callManager.startCall(handle: member.user.name, videoEnabled: false)
+                            }
+        }) { [weak self] error in
+            self?.showAlert(with: "Unable to call member.", message: "Reason: \(error.localizedDescription)")
+        }
+    }
+```
+In `ChatVC+AudioPermission.swift` you update the request for audio permissions to set the mod for an `AVAudioSessionModeVoiceChat`: 
+
+```Swift
+func requestAudioPermission(completion: @escaping (_ success: Bool) -> Void) {
+        
+        do {
+            let session = AVAudioSession.sharedInstance()
+            try session.setCategory(AVAudioSessionCategoryPlayAndRecord)
+            try session.setMode(AVAudioSessionModeVoiceChat)
+            session.requestRecordPermission { success in
+                completion(success)
+            }
+        } catch {
+            print("Error requesting audio services: ", error.localizedDescription)
+            completion(false)
+        }
+    }
+``` 
+
+
 ## Try it out! 
 
+You have had a chance to integrate Nexmo In-App Voice with Apple's iOS CallKit. You go ahead and initiate a call now! Join a conversation. Tap a member. Call him / her up right away. Stitch it up from the one Nexmo In-App Messaging channel to the Nexmo In-App Video channel. Engage in multichannel communications! 
+
 ## Where to go next?
+
+If you want to take a deeper look at Nexmo's In-App conversation centric API, check out the iOS quick starts on the Nexmo Developer Portal. If you would like to gather background knowledge on either the Stitch Demo server or the Stitch Demo iOS App work, then revisit the links from the getting started guide where full length walkthroughs are available! 
 
 ## Resources 
 
