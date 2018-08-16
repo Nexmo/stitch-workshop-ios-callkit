@@ -45,11 +45,11 @@ CallKit is a relatively new framework that facilitates integrations like Nexmo's
 
 ## Getting Started 
 
-Download the starter project [here](). To get the app up and running on your localhost, you follow the directions for the server [here](). After you are able to get up and running, test out your setup by creating a member, joining a conversation and triggering an event. If everything worked out well, you are all setup now! 
+Download the starter project [here](https://github.com/Nexmo/stitch-demo-ios). To get the app up and running on your localhost, you follow the directions for the server [here](https://github.com/Nexmo/stitch-demo). After you are able to get up and running, test out your setup by creating a member, joining a conversation and triggering an event. If everything worked out well, you are all setup! You go and make an outgoing call now! 
 
 ### Make an Outgoing Call 
 
-To make an outgoing call, an app requests an action from a controller. In much the same way as `UIAlertController`s operate, an app requests a `CXStartCallAction` object from its `CXCallController` object. This action, however, consists of a UUID to uniquely identify the call and a `CXHandle` object to specify the recipient.
+To make an outgoing call with CallKit, an app requests an action from a controller. In much the same way as `UIAlertController`s operate, an app requests a `CXStartCallAction` object from its `CXCallController` object. This action, however, consists of a UUID to uniquely identify the call and a `CXHandle` object to specify the recipient.
 
 You set the constants for this method call:
 
@@ -76,7 +76,7 @@ callController.request(transaction) { error in
     }
 }
 ```
-Voila! There is how the CallKit works. In your integration, however, you perform these same steps, except differently, since the Nexmo Stitch In-App Messaging SDK handles the calling functionality for us with convenience call methods. 
+Voila! There is how the CallKit works. In your integration, however, you perform these same steps, except differently, since the Nexmo Stitch In-App Messaging SDK handles the calling functionality for us with convenience call methods. You go and refactor this setup for your iOS app now. 
 
 #### First Step 
 
@@ -151,15 +151,25 @@ class Caller {
     
 }
 ```
-In the initializer you set the properties to be assigned values for `UUID`, `outgoing` or `handle`, two of which were mentioned above. The remaining methods facilitate the initialization. Two other methods are native to the Nexmo In-App Voice SDK (i.e., `.answer()` and `.end`). 
+In the initializer you set the properties to be assigned such values as `UUID`, `outgoing` or `handle`, two of which were mentioned above. The remaining methods facilitate the initialization. Two other methods are native to the Nexmo In-App Voice SDK (i.e., `.answer()` and `.end`). 
 
 #### Second Step 
 
 With our `Caller` object set up, you create a `CallManager` to handle calls, control and make requests, as mentioned above.  
 
+#### Third Step
 
+#### Fourth Step
+
+#### Fifth Step 
+
+## Try it out! 
+
+## Where to go next?
 
 ## Resources 
+
+If you would like to learn more about Apple's iOS CallKit, Nexmo In-App Voice or 
 - [CallKit Tutorial for iOS](https://www.raywenderlich.com/701-callkit-tutorial-for-ios) 
 - [Apple's CallKit Documentation](https://developer.apple.com/documentation/callkit)
 - [Apple's Voice Over IP (VoIP) Best Practices](https://developer.apple.com/library/archive/documentation/Performance/Conceptual/EnergyGuide-iOS/OptimizeVoIP.html#//apple_ref/doc/uid/TP40015243-CH30-SW1)
