@@ -469,7 +469,7 @@ If you want to take a deeper look at Nexmo's In-App conversation centric API, ch
 
 ### Is CallKit overkill?
 
-If you thought that CallKit might have been overkill or unnecessary for what you would like to accomplish with calling, check out another workshop where the sole purpose is to initiate an IP-PSTN call with Nexmo In-App Voice without any additional coding [here](https://github.com/ericgiannini/StitchWorkshop). 
+If you thought that CallKit might have been overkill or unnecessary for what you would like to accomplish with calling, check out [another workshop](https://github.com/ericgiannini/StitchWorkshop) where the sole purpose is to initiate an IP-PSTN call with Nexmo In-App Voice without any additional coding. 
 
 ## Resources 
 
