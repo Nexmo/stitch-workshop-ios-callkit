@@ -400,7 +400,7 @@ extension ProviderDelegate: CXProviderDelegate {
 ```
 Simplified, the code above covers a set of actions such as `CXAnswerCallAction`, `CXEndCallAction`, `CXStartCallAction`, `CXSetHeldCallAction`. Thankfully, these methods are mostly boilerplate so filling in the blanks is straightforward. 
 
-#### Fifth Step 
+#### Fourth Step 
 
 With the proper setup in place you configure CallKit to operate with Nexmo In-App Voice. You add a property for initializing an instance of `CallManager` to handle outgoing, incoming calls in `ChatVC.swift`. 
 
@@ -467,11 +467,16 @@ You have had a chance to integrate Nexmo In-App Voice with Apple's iOS CallKit. 
 
 If you want to take a deeper look at Nexmo's In-App conversation centric API, check out the iOS quick starts on the Nexmo Developer Portal. If you would like to gather background knowledge on either the Stitch Demo server or the Stitch Demo iOS App work, then revisit the links from the getting started guide where full length walkthroughs are available! 
 
+### Is CallKit overkill?
+
+If you thought that CallKit might have been overkill or unnecessary for what you would like to accomplish with calling, check out another workshop where the sole purpose is to initiate an IP-PSTN call with Nexmo In-App Voice without any additional coding [here](https://github.com/ericgiannini/StitchWorkshop). 
+
 ## Resources 
 
 If you would like to learn more about Apple's iOS CallKit, Nexmo In-App Voice or 
 - [CallKit Tutorial for iOS](https://www.raywenderlich.com/701-callkit-tutorial-for-ios) 
 - [Apple's CallKit Documentation](https://developer.apple.com/documentation/callkit)
 - [Apple's Voice Over IP (VoIP) Best Practices](https://developer.apple.com/library/archive/documentation/Performance/Conceptual/EnergyGuide-iOS/OptimizeVoIP.html#//apple_ref/doc/uid/TP40015243-CH30-SW1)
+- 
 
 
